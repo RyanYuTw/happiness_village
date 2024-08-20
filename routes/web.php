@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\Web\ActivityController;
+use Illuminate\Foundation\Http\Middleware\ValidateCsrfToken;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\dashboard\Analytics;
 use App\Http\Controllers\layouts\WithoutMenu;
@@ -43,9 +45,22 @@ use App\Http\Controllers\form_elements\InputGroups;
 use App\Http\Controllers\form_layouts\VerticalForm;
 use App\Http\Controllers\form_layouts\HorizontalForm;
 use App\Http\Controllers\tables\Basic as TablesBasic;
+use Illuminate\Session\Middleware\StartSession;
+use Illuminate\View\Middleware\ShareErrorsFromSession;
 
 // Main Page Route
 Route::get('/', [Analytics::class, 'index'])->name('dashboard-analytics');
+
+// activity
+Route::get('/activities/register', [ActivityController::class, 'register'])->name('activities.register');
+//Route::prefix('activities')
+//    ->name('activities.')
+//    ->group(function () {
+//        Route::get('register', [ActivityController::class, 'register'])
+//            ->withoutMiddleware([StartSession::class, ShareErrorsFromSession::class, ValidateCsrfToken::class])
+//            ->middleware('cache.headers:public;max_age=300;etag')
+//            ->name('register');
+//    });
 
 // layout
 Route::get('/layouts/without-menu', [WithoutMenu::class, 'index'])->name('layouts-without-menu');
