@@ -5,6 +5,8 @@
 <link href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
 
 <link rel="stylesheet" href="{{ asset(mix('assets/vendor/fonts/boxicons.css')) }}" />
+<link rel="preload" as="style" href="{{asset('assets/css/fontawesome.css')}}" />
+<link rel="preload" as="style" href="{{asset('assets/css/flag-icons.css')}}" />
 
 <!-- Core CSS -->
 <link rel="stylesheet" href="{{ asset(mix('assets/vendor/css/core.css')) }}" />
@@ -12,7 +14,8 @@
 <link rel="stylesheet" href="{{ asset(mix('assets/css/demo.css')) }}" />
 <!-- Vendors CSS -->
 <link rel="stylesheet" href="{{ asset(mix('assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.css')) }}" />
-
+<link rel="preload" as="style" href="{{asset('assets/css/typeahead.css')}}" />
+<link rel="preload" as="style" href="{{asset('assets/css/form-validation.css')}}" />
 <!-- Vendor Styles -->
 @yield('vendor-style')
 

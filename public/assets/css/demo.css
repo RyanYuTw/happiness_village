@@ -122,3 +122,14 @@
   text-align: center;
   margin-top: 1rem;
 }
+
+/*
+* Auth
+******************************************************************************/
+.btn-text-facebook {
+  color: #3b5998;
+}
+
+.btn-text-google {
+  color: #dd4b39;
+}

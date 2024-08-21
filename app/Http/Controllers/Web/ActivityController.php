@@ -18,10 +18,22 @@ class ActivityController extends Controller
     public function register()
     {
         try {
-            dd(3);
-            return view('activities.register');
+            $config = config('cities');
+            $cities = [];
+            $counties = [];
+            if (count($config)) {
+                foreach ($config as $city) {
+                    $cities[$city['code']] = $city['name'];
+                    $counties[$city['code']] = $city['area'];
+                }
+            }
+
+            $binding = [
+                'cities' => $cities,
+                'counties' => $counties
+            ];
+            return view('activities.register', $binding);
         } catch (NotFoundHttpException $e) {
-            dd($e);
             Log::info("catch Throwable: " . $e->getLine() . ";" . $e->getMessage() . ";" . $e->getFile());
             abort(404);
         } catch (Throwable $t) {
