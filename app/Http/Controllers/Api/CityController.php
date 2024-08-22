@@ -16,10 +16,9 @@ class CityController extends Controller
     /**
      * get county date by city code
      * @param Request $request
-     * @param string $city_code
      * @return JsonResponse
      */
-    public function county(Request $request, string $city_code = ''): JsonResponse
+    public function county(Request $request): JsonResponse
     {
         try {
             $validator = Validator::make($request->all(), [
@@ -42,7 +41,7 @@ class CityController extends Controller
             $counties = [];
             if (count($config)) {
                 foreach ($config as $city) {
-                    if ($city['code'] == $city_code) {
+                    if ($city['code'] == $request['city_code']) {
                         $counties = $city['area'];
                         break;
                     }

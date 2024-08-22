@@ -56,9 +56,17 @@ Route::get('/', [Analytics::class, 'index'])->name('dashboard-analytics');
 Route::prefix('activities')
     ->name('activities.')
     ->group(function () {
-        Route::get('register', [ActivityController::class, 'register'])
+        // register form
+        Route::get('register', [ActivityController::class, 'signUp'])
+            ->name('sign_up');
+
+        // data update
+        Route::post('register', [ActivityController::class, 'register'])
             ->name('register');
-    });
+    })
+    ->withoutMiddleware([StartSession::class, ShareErrorsFromSession::class, ValidateCsrfToken::class])
+    ->middleware('cache.headers:public;max_age=300;etag;must_revalidate');
+
 
 // Login url
 Route::get('login', [AuthController::class, 'login'])
